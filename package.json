@@ -1,16 +1,17 @@
 {
   "name": "glassnepal",
+  "homepage": "https://14rysuraj.github.io/GlassNepal/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://14rysuraj.github.io/GlassNepal/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-"deploy": "gh-pages -d build"
+    "preview":"vite preview",
+    "predeploy":"npm run build",
+    "deploy":"gp-pages -d dist"
+
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.1",
