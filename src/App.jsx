@@ -10,6 +10,7 @@ import Nav from "./components/Nav";
 import Cart from "./components/Cart";
 import Auth from "./pages/Auth";
 import { Toaster } from "react-hot-toast";
+import UserDetails from "./pages/UserDetails";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             
           
           </Route>
+          <Route path="/userDetails" element={<UserDetails/>}/>
           <Route path="/details/:id" element={<Details />} />
           <Route path="/auth" element={<Auth />} />
           

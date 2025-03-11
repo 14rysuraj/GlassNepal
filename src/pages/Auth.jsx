@@ -57,6 +57,7 @@ const Auth = () => {
     try {
       const user = await createUserWithEmailAndPassword(auth, email, password);
       toast.success("signup successful");
+      
      
     } catch (err) {
       console.error(err);

@@ -1,21 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
-
-const itemsOfCart=localStorage.getItem("")
-
 const cartSlice = createSlice({
     name: "cart",
     initialState: {
         open: false,
         items: [],
         total: 0,
-
     },
-
-
-
-
 
     reducers: {
         toggleCart: (state) => {
@@ -34,24 +25,28 @@ const cartSlice = createSlice({
             const itemExists = state.items.some(item => item.id === action.payload.id);
             if (!itemExists) {
                 state.items.push(action.payload);
-                localStorage.setItem("cart", action.payload);
-                
             } else {
                 const item = state.items.find(item => item.id === action.payload.id);
                 item.quantity += 1;
                 item.price += action.payload.price;
-
-              
-                
             }
+        
+            state.total = state.items.reduce((prev, curr) => prev + curr.price, 0);
+            
+            
+            localStorage.setItem("cart", JSON.stringify(state.items));
         },
 
         delete_from_cart: (state, action) => {
             state.items = state.items.filter(item => item.id !== action.payload.id);
+
+           
+            state.total = state.items.reduce((prev, curr) => prev + curr.price, 0);
         },
 
         removeAll: (state) => {
             state.items = [];
+            state.total = 0; 
         },
 
         updateItem: (state, action) => {
@@ -60,14 +55,13 @@ const cartSlice = createSlice({
                 switch (action.payload.operation) {
                     case 'add':
                         item.quantity += 1;
-                        item.price += action.payload.price;  
+                        item.price += action.payload.price;
                         break;
                     case 'subtract':
                         if (item.quantity > 1) {
                             item.quantity -= 1;
                             item.price -= action.payload.price;
                         } else {
-                           
                             state.items = state.items.filter(cartItem => cartItem.id !== item.id);
                         }
                         break;
@@ -75,13 +69,10 @@ const cartSlice = createSlice({
                         break;
                 }
             }
+
+         
+            state.total = state.items.reduce((prev, curr) => prev + curr.price, 0);
         },
-
-
-   
-        
-    
-
     }
 });
 
@@ -93,7 +84,6 @@ export const {
     delete_from_cart,
     removeAll,
     updateItem,
-
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

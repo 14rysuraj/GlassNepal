@@ -35,6 +35,9 @@ const Collection = () => {
 
 
 
+
+
+
   const filterByCategory = (value) => {
 
     navigate(`/collection/${value}`)
