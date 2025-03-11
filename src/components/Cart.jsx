@@ -110,7 +110,7 @@ const Cart = () => {
                             
                         </div>
   
-                        <button onClick={()=>dispatch(delete_from_cart(item.id))}>
+                        <button onClick={() => dispatch(delete_from_cart({ id: item.id }))}>
                         <MdDelete />
                           </button>
   

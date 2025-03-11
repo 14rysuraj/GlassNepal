@@ -12,6 +12,12 @@ const Header = () => {
         const items = cart.items
         const dispatch = useDispatch();
         const navigate = useNavigate();
+        const authentication = useSelector((state) => state.authentication);
+        const userdata=useSelector((state)=>state.authentication)
+
+        console.log(authentication.isAuthenticated)
+
+        console.log(authentication.user)
         
      
 
@@ -38,7 +44,18 @@ return (
                 
             </div>
                         <div className=''>
-                                <button className='text-2xl' onClick={()=>navigate('/auth')}><FaRegUserCircle /></button>
+                               
+
+
+                                {authentication.isAuthenticated ?
+                                        
+                                        <img src={authentication.user.photoURL} height={40} width={40} className='rounded-[50%] cursor-pointer ' /> :
+                                 <button className='text-2xl' onClick={() => navigate('/auth')}>
+                                        
+                                 <FaRegUserCircle /> 
+ 
+                                 </button>
+                                }
                         </div>
                         <div className=' relative'>
                                 <button className='text-2xl' onClick={toggle}><IoCartOutline /></button>

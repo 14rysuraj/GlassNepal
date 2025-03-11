@@ -50,7 +50,7 @@ const Details = () => {
                 setGlassData(glass);
                 setGlassId(glass.id);
                 setShowImage(glass.mainImage);
-                setSize(glass.sizes[0]); // Set the initial size here
+                setSize(glass.sizes[0]); 
             }
         };
 

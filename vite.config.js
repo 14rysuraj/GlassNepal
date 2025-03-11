@@ -5,5 +5,6 @@ export default defineConfig({
     tailwindcss(),
     
   ],
-  base: "/GlassNepal"
+  
+  base: "/"
 })
